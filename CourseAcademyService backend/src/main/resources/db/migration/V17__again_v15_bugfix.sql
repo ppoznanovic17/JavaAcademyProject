@@ -1,0 +1,1 @@
+ALTER TABLE ROLE MODIFY COLUMN role varchar(30);

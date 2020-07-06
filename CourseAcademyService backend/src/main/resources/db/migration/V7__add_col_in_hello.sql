@@ -1,0 +1,2 @@
+ALTER TABLE HELLO
+  ADD inaa int AFTER id;

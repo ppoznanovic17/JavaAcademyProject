@@ -1,0 +1,1 @@
+ALTER TABLE ROLE MODIFY role int;
