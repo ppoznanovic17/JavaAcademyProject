@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h1>Subject: {{subject.name}}</h1>
+  <hr>
+  <div>
+    <h3>Professor: {{subject.professor.name + ' ' + subject.professor.lastName}}</h3>
+  </div>
+  <hr>
+  <div>
+    <h3>Assistants:</h3>
+    <span *ngFor="let a of assistants">{{a.name + ' ' + a.lastName}}  <br> </span>
+  </div>
+  <hr>
+  <div >
+    <h3>Students:</h3>
+      <span *ngFor="let s of students">{{s.name + ' ' + s.lastName}}<br> </span>
+  </div>
+
+
+  <hr>
+  <div>
+    <h3>Reviews:</h3>
+    <h4 *ngIf="ratings.length==0">No reviews</h4>
+    <h4 *ngIf="ratings.length>0">Average rating: {{avgRating}}</h4>
+    <div  *ngFor="let r of ratings" style="border: 1px solid #555; min-height: 180px; margin-bottom: 10px">
+      <h5>Rating: {{r.rating}}</h5>
+      <h5>Review:</h5>
+      <p *ngIf="!r.review">No review!</p>
+      <p *ngIf="r.review">{{r.review}}</p>
+    </div>
+  </div>
+
+
+</div>

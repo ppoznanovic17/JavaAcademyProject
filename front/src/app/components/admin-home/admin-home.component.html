@@ -1,0 +1,190 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h2>Subjects</h2>
+  <div style="margin-top: 30px" class="table-responsive">
+    <table id="subjectTable" class="table bordered highlight">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>ESPB</th>
+        <th>semester</th>
+        <th>Max Professor Points</th>
+        <th>Max Assistant Points</th>
+
+      </tr>
+      </thead>
+       <tbody>
+      <tr *ngFor="let subject of subjects">
+        <td><a style="cursor: pointer" (click)="go(subject.id, 'subject')">{{subject.name}}</a></td>
+        <td >{{subject.espb }} ESPB</td>
+        <td>{{subject.semester}}</td>
+        <td>{{subject.maxProfessorPoints}}</td>
+        <td>{{subject.maxAssistantPoints}}</td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <br>
+  <h2>Professors</h2>
+  <div style="margin-top: 30px" class="table-responsive">
+    <table id="professorTable" class="table bordered highlight">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of professors">
+        <td><a style="cursor: pointer" (click)="go(p.id, 'professor')">{{p.name}}</a></td>
+        <td ><a style="cursor: pointer" (click)="go(p.id, 'professor')">{{p.lastName}}</a></td>
+
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <br>
+
+  <h2>Assistants</h2>
+  <div style="margin-top: 30px" class="table-responsive">
+    <table id="assistantTable" class="table bordered highlight">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of assistants">
+        <td><a style="cursor: pointer" (click)="go(a.id, 'assistant')">{{a.name}}</a></td>
+        <td ><a style="cursor: pointer" (click)="go(a.id, 'assistant')">{{a.lastName}}</a></td>
+
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <br>
+
+
+  <h2>Students</h2>
+  <div style="margin-top: 30px" class="table-responsive">
+    <table id="studentsTable" class="table bordered highlight">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let s of students">
+        <td><a style="cursor: pointer" (click)="go(s.id, 'student')">{{s.name}}</a></td>
+        <td ><a style="cursor: pointer" (click)="go(s.id, 'student')">{{s.lastName}}</a></td>
+
+      </tr>
+
+
+      </tbody>
+    </table>
+    <br><br>
+  </div>
+
+  <hr>
+  <br>
+  <h2>Create Subject</h2>
+  <form class="form-signin">
+    <input [(ngModel)]="subjectName" type="text" class="form-control" name="name" placeholder="Name" style="margin-bottom: 8px" />
+    <br>
+    <select [(ngModel)]="professorId"  [ngModelOptions]="{standalone: true}" style="margin-bottom: 10px; width: 100%">
+      <option [value]="p.split(' ')[0]" *ngFor="let p of professorsStrings">{{p}}</option>
+    </select>
+    <br>
+
+    <span>ESPB: </span>
+    <input [(ngModel)]="espb" value="1" type="number"  name="tentacles" style="width: 70px; margin-bottom: 8px"
+           min="1" max="30">
+    <br>
+    <span>Semester: </span>
+    <input [(ngModel)]="semester" value="1" type="number"  name="tentacles" style="width: 70px; margin-bottom: 8px"
+           min="1" max="2" >
+    <br>
+    <span >max Professor points: </span>
+    <input [(ngModel)]="maxProf" value="20" type="number"  name="tentacles" style="width: 70px; margin-bottom: 8px"
+           min="20">
+    <br>
+    <span>max Assistant points: </span>
+    <input [(ngModel)]="maxAss" value="20" type="number"  name="tentacles" style="width: 70px; margin-bottom: 8px"
+           min="20" >
+    <br>
+    <button (click)="createSubject()" class="btn btn-lg btn-primary btn-block" type="submit" style="width: 20%">Create Subject</button>
+  </form>
+
+  <br>
+
+
+
+
+
+
+
+  <hr>
+  <br>
+  <h2>Create Professor</h2>
+  <form class="form-signin">
+    <input [(ngModel)]="professorName" type="text" class="form-control" name="name" placeholder="Name" style="margin-bottom: 8px" />
+    <br>
+    <input [(ngModel)]="professorLastName" type="text" class="form-control" name="name" placeholder="Last Name" style="margin-bottom: 8px" />
+    <br>
+
+    <br>
+    <button (click)="createProfessor()" class="btn btn-lg btn-primary btn-block" type="submit" style="width: 20%">Create Professor</button>
+  </form>
+
+  <br>
+
+  <hr>
+  <br>
+  <h2>Create Assistant</h2>
+  <form class="form-signin">
+    <input [(ngModel)]="assistantName" type="text" class="form-control" name="name" placeholder="Name" style="margin-bottom: 8px" />
+    <br>
+    <input [(ngModel)]="assistantLastName" type="text" class="form-control" name="name" placeholder="Last Name" style="margin-bottom: 8px" />
+    <br>
+
+    <br>
+    <button (click)="createAssistant()" class="btn btn-lg btn-primary btn-block" type="submit" style="width: 20%">Create Assistant</button>
+  </form>
+
+  <br>
+
+
+  <hr>
+  <br>
+  <h2>Create Student</h2>
+  <form class="form-signin">
+    <input [(ngModel)]="studentName" type="text" class="form-control" name="name" placeholder="Name" style="margin-bottom: 8px" />
+    <br>
+    <input [(ngModel)]="studentLastName" type="text" class="form-control" name="name" placeholder="Last Name" style="margin-bottom: 8px" />
+    <br>
+
+    <br>
+    <button (click)="createStudent()" class="btn btn-lg btn-primary btn-block" type="submit" style="width: 20%">Create Student</button>
+  </form>
+
+  <br>
+
+</div>

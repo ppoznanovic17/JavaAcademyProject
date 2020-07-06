@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div class="container">
+  <h1 style="color: #333333" *ngIf="subject">Subject: {{subject.name}}</h1>
+  <hr>
+  <h2>Unrated students</h2>
+  <div *ngIf="otherStudents.length>0" style="margin-top: 30px" class="table-responsive">
+    <table id="unrated" class="table bordered highlight">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Assistant Points</th>
+        <th>Professor Points</th>
+        <th>Mark</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let s of otherStudents">
+        <td>{{s.student.name}}</td>
+        <td>{{s.student.lastName}}</td>
+        <td>
+          <p>{{s.assistantPoints}} </p>
+          max: {{s.subject.maxAssistantPoints}}
+        </td>
+        <td>
+          <input [(ngModel)]="s.professorPoints" type="number"  name="tentacles" style="width: 70px; margin-bottom: 8px"
+                  min="0" [max]="s.subject.maxProfessorPoints" > <br>
+          max: {{s.subject.maxProfessorPoints}}
+        </td>
+        <td>
+          {{printMark(s.mark)}}
+        </td>
+        <td><button class="mat-button" (click)="addPoints(s.student.id, s.subject.id, s.professorPoints)">Save points</button></td>
+        <td> <button class="mat-button" (click)="markStudent(s.student.id, s.subject.id)">Mark student</button></td>
+
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <div *ngIf="otherStudents.length==0">
+    <p>There are no unrated students.</p>
+  </div>
+  <hr>
+
+  <h2>Rated students</h2>
+  <div *ngIf="markedStudents.length>0" style="margin-top: 30px" class="table-responsive">
+    <table id="rated" class="table bordered highlight">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Assistant Points</th>
+        <th>Professor Points</th>
+        <th>Mark</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let s of markedStudents">
+        <td>{{s.student.name}}</td>
+        <td>{{s.student.lastName}}</td>
+        <td>
+         {{s.assistantPoints}}
+        </td>
+        <td>
+         {{s.professorPoints}}
+        </td>
+        <td>
+          {{s.mark}}
+        </td>
+
+      </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+  <div *ngIf="markedStudents.length==0">
+    <p>There are no unrated students.</p>
+  </div>
+
+</div>

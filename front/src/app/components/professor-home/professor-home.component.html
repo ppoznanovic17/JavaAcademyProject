@@ -1,0 +1,13 @@
+<app-header></app-header>
+<div class="container">
+  <h1 *ngIf="professor">{{professor.name}} {{professor.lastName}}</h1>
+  <br><br>
+  <div *ngFor="let s of subjects" style="display: flex; width: 100%">
+    <div style="width: 40%; display: inline-block">
+      <p style="display: inline-block; min-width: 200px">{{s.name}}</p>
+      <button class="mat-button" (click)="goToSubject(s.id)">See more</button>
+      <hr>
+    </div>
+  </div>
+
+</div>

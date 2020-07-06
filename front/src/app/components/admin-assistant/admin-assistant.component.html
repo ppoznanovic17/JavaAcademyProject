@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h1>Assistant: {{assistant.name + ' ' + assistant.lastName}}</h1>
+  <hr>
+  <div style="display: flex">
+    <div style="flex-grow: 1 ">
+      <h3>{{assistant.name}}'s Subjects:</h3>
+      <ul>
+        <li *ngFor="let s of assistantSubjects"> {{s.subject.name}} <br> <button (click)="deleteFromSubject(s.subject.id)" class="mat-btn">remove</button></li>
+      </ul>
+    </div>
+    <div style="flex-grow: 1 ">
+      <h3>Other Subjects:</h3>
+      <div style="display: flex" *ngFor="let s of otherSubjects">
+        <div style="flex-grow: 3">
+          <p style="width: 200px"> {{s.name}}</p>
+        </div>
+        <div style="flex-grow: 1">
+          <button class="mat-btn" (click)="addAssistant(s.id)">Add {{assistant.name}} as assistant</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

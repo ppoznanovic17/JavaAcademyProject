@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h1>Professor: {{professor.name + ' ' + professor.lastName}}</h1>
+  <hr>
+  <div style="display: flex">
+    <div style="flex-grow: 1 ">
+      <h3>Professor Subjects:</h3>
+      <ul>
+        <li *ngFor="let s of professorSubjects"> {{s.name}}</li>
+      </ul>
+    </div>
+    <div style="flex-grow: 1 ">
+      <h3>Other Subjects:</h3>
+      <div style="display: flex" *ngFor="let s of otherSubjects">
+        <div style="flex-grow: 3">
+          <p style="width: 200px"> <b>{{s.name}}</b> ( current Professor: {{ s.professor.name + ' ' + s.professor.lastName}})</p>
+        </div>
+        <div style="flex-grow: 1">
+          <button class="mat-btn" (click)="setProfessor(s.id)">Set {{professor.name }} as professor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

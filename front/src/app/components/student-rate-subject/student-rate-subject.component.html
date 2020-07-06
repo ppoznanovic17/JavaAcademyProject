@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h1 *ngIf="subject">Rate {{subject.name}}</h1>
+  <hr>
+</div>
+<div class="container">
+  <h3>Rating (1-5):</h3>
+  <input [(ngModel)]="rating" type="number"  name="tentacles" style="width: 70px; margin-bottom: 8px"
+         min=1 max=5 > <br> <br> <br>
+  <h3 >Review:</h3>
+  <textarea [(ngModel)]="review" id="review" name="w3review" rows="4" cols="50" placeholder="Add review...">
+
+  </textarea>
+  <br>
+  <button class="mat-button" (click)="rate()">Rate</button>
+</div>

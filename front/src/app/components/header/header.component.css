@@ -1,0 +1,24 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+
+.myacc{
+  color: #ffdddd;
+  margin-left: 10px;
+}
+
+.myacc:hover{
+  text-decoration: none;
+  color: red;
+}
+
+.navheight{
+  height: 60px;
+}
+
+.current{
+  text-decoration: underline;
+}
+
+.invisible{
+  visibility: hidden;
+}
+

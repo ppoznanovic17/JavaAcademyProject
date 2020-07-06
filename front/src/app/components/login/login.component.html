@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Please login</h2>
+    <input [(ngModel)]="username" type="text" class="form-control" name="username" placeholder="Username" style="margin-bottom: 10px" />
+
+    <input [(ngModel)]="password" type="password" class="form-control" name="password" placeholder="Password" style="margin-bottom: 10px"/>
+    <br>
+    <select [(ngModel)]="role"  [ngModelOptions]="{standalone: true}" style="margin-bottom: 10px">
+      <option [value]="r" *ngFor="let r of roles">{{r}}</option>
+    </select>
+    <br>
+    <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
+</div>

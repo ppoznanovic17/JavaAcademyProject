@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h1>Student: {{student.name + ' ' + student.lastName}}</h1>
+  <h2>ESPB: {{espb}}</h2>
+  <h2>Average Mark: {{average}}</h2>
+  <hr>
+  <div style="display: flex">
+    <div style="flex-grow: 1 ">
+      <h3>{{student.name}}'s Subjects:</h3>
+      <div style="display: flex">
+        <div style="flex-grow: 1">
+          <h5>Passed:</h5>
+          <ul>
+            <li *ngFor="let s of studentSubjectsPassed">{{s.subject.name}} ({{s.mark}})</li>
+          </ul>
+        </div>
+        <div style="flex-grow: 1">
+          <h5>Still Listening:</h5>
+          <ul>
+            <li *ngFor="let s of studentSubjectsNoPassed">{{s.subject.name}} <br> <button (click)="deleteSubject(s.subject.id)" class="mat-button">Remove</button>  </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="flex-grow: 1 ">
+      <h3>Other Subjects:</h3>
+      <div style="display: flex" *ngFor="let s of otherSubjects">
+        <div style="flex-grow: 3">
+          <p style="width: 200px"> {{s.name}}</p>
+        </div>
+        <div style="flex-grow: 1">
+          <button class="mat-btn" (click)="addSubjectToStudent(s.id)">Add {{student  .name}} as assistant</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

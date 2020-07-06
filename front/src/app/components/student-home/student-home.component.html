@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+  <h1> <u>Student: {{student.name + ' ' + student.lastName}}</u></h1>
+  <h2> Academy Points: {{espb}}</h2>
+  <h2>Average Mark: {{average}}</h2>
+  <hr>
+  <div style="display: flex">
+    <div style="flex-grow: 1 ">
+      <h3>Passed Subjects:</h3>
+      <div style="flex-grow: 1">
+
+        <div>
+          <div *ngFor="let s of studentSubjectsPassed" style="margin-bottom: 5px; border-bottom: 1px solid #ccc"> <b>{{s.subject.name}}</b> (mark: {{s.mark}})
+            <br>
+            <span *ngIf="s.studentSubjectRating">Rating to subject(1-5): {{s.studentSubjectRating}} <br></span>
+
+            <p *ngIf="s.studentSubjectReview" style="min-height: 40px">
+              Review: {{s.studentSubjectReview}} <br>
+            </p>
+
+            <button class="mat-button" *ngIf="!s.studentSubjectRating" style="margin-top: 10px; margin-bottom: 20px" (click)="go(s.subject.id)">Rate this subject</button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div style="flex-grow: 1">
+      <h3>Still Listening:</h3>
+      <ul>
+        <li *ngFor="let s of studentSubjectsNoPassed">{{s.subject.name}} (Professor: {{s.subject.professor.name + ' ' + s.subject.professor.lastName}})   </li>
+      </ul>
+    </div>
+  </div>
+</div>
