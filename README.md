@@ -1,2 +1,2 @@
 
-Need to start angular o  port 4201
+Need to start angular on  port 4201
